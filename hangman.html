@@ -69,14 +69,30 @@
 				index = displayedBand.indexOf(userGuess,index + 1);
 			};
 
-			if(index == -1){
-				guessCount--
+			if(displayedBand.indexOf(userGuess) == -1){
+				guessCount--;
 				document.getElementById("guess-remain").innerHTML = guessCount;
+				if(usedLetters.indexOf(userGuess) == -1){
+					usedLetters.push(userGuess);
+				};
+				document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
 			};
 
 			if(guessCount == 0){
-				
-			}
+				displayedBand = bands[Math.floor(Math.random() * bands.length)];
+				blanks = displayedBand.split("").map(function(){return "_"});
+				guessCount = 10;
+				usedLetters = [ ];
+			};
+
+			if(blanks.indexOf("_")==-1){
+				wins++;
+				document.getElementById("wins").innerHTML = wins;
+				displayedBand = bands[Math.floor(Math.random() * bands.length)];
+				blanks = displayedBand.split("").map(function(){return "_"});
+				guessCount = 10;
+				usedLetters = [ ];
+			};
 			
 		};
 		console.log(displayedBand);
@@ -89,9 +105,6 @@
 			//reset count
 		}
 
-		if(index == -1){
-			guessCount--
-		}
 
 		if(blanks.indexOf("_")==-1){
 			//wins++
