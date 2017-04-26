@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/hangman.css">
+	<title>Hangman</title>
+</head>
+<body>
+	<h1>Hangman!</h1>
+
+	<h2>Press any key to get started!</h2>
+
+	<h4>Wins</h4>
+
+	<div id="wins"></div>
+
+	<h4>Current Word</h4>
+
+	<div id="displayed-band"></div>
+
+	<h4>Guesses Remaining</h4>
+
+	<div id="guess-remain"></div>
+
+	<h4>Letters Guessed</h4>
+
+	<div id="used-letters"></div>
+
+	<script type="text/javascript">
+		
+		var bands = ["modestmouse", "radiohead", "sleaterkinney", "jeffrosenstock", "neutralmilkhotel", "wilco", "blur", "jonimitchell", "thebeachboys", "theymightbegiants", "laurastevenson"];
+		var guessCount = 10;
+		var usedLetters = [ ];
+		var displayedBand = bands[Math.floor(Math.random() * bands.length)];
+		var blanks = displayedBand.split("").map(function(){return "_"});
+		var wins = 0;
+		
+		// if player guesses wrong letter, "guesses--"
+		// if guesses = 0, reset to 10, new word
+		// if player guesses word correctly, display image, reset to 10, new word
+
+		//displays wins
+
+		document.getElementById("wins").innerHTML = wins;
+
+		//displays random word
+		/*function chooseWord(blanks) {
+			return blanks;
+		};*/
+		document.getElementById("displayed-band").innerHTML = blanks.join(" ");
+
+		//displays remaining guesses
+
+		document.getElementById("guess-remain").innerHTML = guessCount;
+
+		//displays letters already used
+
+		document.getElementById("used-letters").innerHTML = usedLetters;
+		
+		//key input
+		document.onkeyup = function(event) {
+			var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+			console.log(userGuess);
+			var index = displayedBand.indexOf(userGuess);
+
+			while(index > -1) {
+				blanks[index] = userGuess;
+				document.getElementById("displayed-band").innerHTML = blanks.join(" ");
+				index = displayedBand.indexOf(userGuess,index + 1);
+			};
+
+			if(index == -1){
+				guessCount--
+				document.getElementById("guess-remain").innerHTML = guessCount;
+			};
+
+			if(guessCount == 0){
+				
+			}
+			
+		};
+		console.log(displayedBand);
+
+
+
+/*
+		if (guessCount <= 0) {
+			// new word
+			//reset count
+		}
+
+		if(index == -1){
+			guessCount--
+		}
+
+		if(blanks.indexOf("_")==-1){
+			//wins++
+		}
+*/
+
+/* 		
+		replacing letters w/ underscores
+
+		var word = "test"
+		var blank = words.split("").map(function(){return "_"})
+
+		word.indexOf("t") = 0
+		var guess = "t"
+		var index = word.indexOf(guess)
+
+		if(index > -1){
+		blanks[index] = guess
+		}
+		//every time they guess
+		var guess = 
+		var index = word.indexOf(guess)
+		while(index > -1){
+			blanks[index] = guess;
+			var index = word.indexOf(guess,index + 1);
+		}
+
+		if(usedLetters.indexOf(guess) == -1){
+			usedLetters.push(guess);
+		}
+*/
+
+	</script>
+
+
+</body>
+</html>
