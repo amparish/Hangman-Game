@@ -29,7 +29,7 @@
 	<script type="text/javascript">
 		
 		// variables
-		var bands = ["modestmouse", "radiohead", "sleaterkinney", "jeffrosenstock", "neutralmilkhotel", "wilco", "blur", "jonimitchell", "thebeachboys", "theymightbegiants", "laurastevenson", "skatingpolly"];
+		var bands = ["modestmouse", "radiohead", "sleaterkinney", "jeffrosenstock", "neutralmilkhotel", "wilco", "blur", "jonimitchell", "thebeachboys", "theymightbegiants", "laurastevenson", "skatingpolly", "deerhunter", "elliottsmith", "bigstar", "lcdsoundsystem", "chumped", "thevelvetunderground", "sufjanstevens", "prince"];
 		var guessCount = 10;
 		var usedLetters = [ ];
 		var displayedBand = bands[Math.floor(Math.random() * bands.length)];
@@ -59,7 +59,7 @@
 			console.log(userGuess);
 			var index = displayedBand.indexOf(userGuess);
 
-			// for guessing letters
+			// guess correct letters
 			while(index > -1) {
 				blanks[index] = userGuess;
 				document.getElementById("displayed-band").innerHTML = blanks.join(" ");
@@ -70,6 +70,7 @@
 			if(displayedBand.indexOf(userGuess) == -1){
 				guessCount--;
 				document.getElementById("guess-remain").innerHTML = guessCount;
+				// stops wrong letters from repeating
 				if(usedLetters.indexOf(userGuess) == -1){
 					usedLetters.push(userGuess);
 				};
