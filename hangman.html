@@ -28,47 +28,45 @@
 
 	<script type="text/javascript">
 		
-		var bands = ["modestmouse", "radiohead", "sleaterkinney", "jeffrosenstock", "neutralmilkhotel", "wilco", "blur", "jonimitchell", "thebeachboys", "theymightbegiants", "laurastevenson"];
+		// variables
+		var bands = ["modestmouse", "radiohead", "sleaterkinney", "jeffrosenstock", "neutralmilkhotel", "wilco", "blur", "jonimitchell", "thebeachboys", "theymightbegiants", "laurastevenson", "skatingpolly"];
 		var guessCount = 10;
 		var usedLetters = [ ];
 		var displayedBand = bands[Math.floor(Math.random() * bands.length)];
 		var blanks = displayedBand.split("").map(function(){return "_"});
 		var wins = 0;
-		
-		// if player guesses wrong letter, "guesses--"
-		// if guesses = 0, reset to 10, new word
-		// if player guesses word correctly, display image, reset to 10, new word
 
-		//displays wins
+
+		// displays wins
 
 		document.getElementById("wins").innerHTML = wins;
 
-		//displays random word
-		/*function chooseWord(blanks) {
-			return blanks;
-		};*/
+		// displays random word
+
 		document.getElementById("displayed-band").innerHTML = blanks.join(" ");
 
-		//displays remaining guesses
+		// displays remaining guesses
 
 		document.getElementById("guess-remain").innerHTML = guessCount;
 
-		//displays letters already used
+		// displays letters already used
 
 		document.getElementById("used-letters").innerHTML = usedLetters;
 		
-		//key input
+		// key input
 		document.onkeyup = function(event) {
 			var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 			console.log(userGuess);
 			var index = displayedBand.indexOf(userGuess);
 
+			// for guessing letters
 			while(index > -1) {
 				blanks[index] = userGuess;
 				document.getElementById("displayed-band").innerHTML = blanks.join(" ");
 				index = displayedBand.indexOf(userGuess,index + 1);
 			};
 
+			// guess wrong letters
 			if(displayedBand.indexOf(userGuess) == -1){
 				guessCount--;
 				document.getElementById("guess-remain").innerHTML = guessCount;
@@ -78,64 +76,32 @@
 				document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
 			};
 
+			// lose
 			if(guessCount == 0){
 				displayedBand = bands[Math.floor(Math.random() * bands.length)];
 				blanks = displayedBand.split("").map(function(){return "_"});
+				document.getElementById("displayed-band").innerHTML = blanks.join(" ");
 				guessCount = 10;
+				document.getElementById("guess-remain").innerHTML = guessCount;
 				usedLetters = [ ];
+				document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
 			};
 
+			// guessed word correctly
 			if(blanks.indexOf("_")==-1){
 				wins++;
 				document.getElementById("wins").innerHTML = wins;
 				displayedBand = bands[Math.floor(Math.random() * bands.length)];
 				blanks = displayedBand.split("").map(function(){return "_"});
+				document.getElementById("displayed-band").innerHTML = blanks.join(" ");
 				guessCount = 10;
+				document.getElementById("guess-remain").innerHTML = guessCount;
 				usedLetters = [ ];
+				document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
 			};
 			
 		};
 		console.log(displayedBand);
-
-
-
-/*
-		if (guessCount <= 0) {
-			// new word
-			//reset count
-		}
-
-
-		if(blanks.indexOf("_")==-1){
-			//wins++
-		}
-*/
-
-/* 		
-		replacing letters w/ underscores
-
-		var word = "test"
-		var blank = words.split("").map(function(){return "_"})
-
-		word.indexOf("t") = 0
-		var guess = "t"
-		var index = word.indexOf(guess)
-
-		if(index > -1){
-		blanks[index] = guess
-		}
-		//every time they guess
-		var guess = 
-		var index = word.indexOf(guess)
-		while(index > -1){
-			blanks[index] = guess;
-			var index = word.indexOf(guess,index + 1);
-		}
-
-		if(usedLetters.indexOf(guess) == -1){
-			usedLetters.push(guess);
-		}
-*/
 
 	</script>
 
