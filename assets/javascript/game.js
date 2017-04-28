@@ -69,6 +69,7 @@ document.onkeyup = function(event) {
 
 	if(blanks.indexOf("_")==-1){
 		document.getElementById("image").innerHTML = ("<img src=\"assets/images/" + displayedBand + ".jpg\">");
+		//play music ("<audio id=\"audio\" src=\"assets/audio/" + displayedBand + ".mp3\"></audio>")
 		wins++;
 		document.getElementById("wins").innerHTML = wins;
 		displayedBand = bands[Math.floor(Math.random() * bands.length)];
@@ -80,7 +81,7 @@ document.onkeyup = function(event) {
 		document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
 
 			//play audio
-			
+
 	};
 			
 };
