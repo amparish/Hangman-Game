@@ -1,5 +1,5 @@
 	// variables
-	
+
 var bands = ["modestmouse", "radiohead", "sleaterkinney", "jeffrosenstock", "neutralmilkhotel", "wilco", "blur", "jonimitchell", "thebeachboys", "theymightbegiants", "laurastevenson", "skatingpolly", "deerhunter", "elliottsmith", "bigstar", "lcdsoundsystem", "chumped", "thevelvetunderground", "sufjanstevens", "prince"];
 var guessCount = 10;
 var usedLetters = [ ];
@@ -68,6 +68,7 @@ document.onkeyup = function(event) {
 		// guessed word correctly
 
 	if(blanks.indexOf("_")==-1){
+		document.getElementById("image").innerHTML = ("<img src=\"assets/images/" + displayedBand + ".jpg\">");
 		wins++;
 		document.getElementById("wins").innerHTML = wins;
 		displayedBand = bands[Math.floor(Math.random() * bands.length)];
@@ -77,6 +78,9 @@ document.onkeyup = function(event) {
 		document.getElementById("guess-remain").innerHTML = guessCount;
 		usedLetters = [ ];
 		document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
+
+			//play audio
+			
 	};
 			
 };
