@@ -80,7 +80,9 @@ document.onkeyup = function(event) {
 		usedLetters = [ ];
 		document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
 
-			//play audio
+		//show band name ??
+
+		//play audio ??
 
 	};
 			

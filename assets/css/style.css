@@ -1,7 +1,23 @@
 body {
 	background-image: url(../images/bg-image.jpg);
+	font-family: 'Francois One', sans-serif;
 }
 
 .container {
 	text-align: center;
+	font-size: 28px;
+}
+
+p {
+	font-size: 8px;
+}
+
+div {
+	margin: auto;
+	width: 100%;
+	padding: 10px;
+}
+
+.panel {
+	border: 2px dotted black;
 }
