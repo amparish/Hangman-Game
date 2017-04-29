@@ -21,3 +21,7 @@ div {
 .panel {
 	border: 2px dotted black;
 }
+
+img {
+	border: 1px solid black;
+}

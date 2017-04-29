@@ -1,6 +1,7 @@
 	// variables
 
 var bands = ["modestmouse", "radiohead", "sleaterkinney", "jeffrosenstock", "neutralmilkhotel", "wilco", "blur", "jonimitchell", "thebeachboys", "theymightbegiants", "laurastevenson", "skatingpolly", "deerhunter", "elliottsmith", "bigstar", "lcdsoundsystem", "chumped", "thevelvetunderground", "sufjanstevens", "prince"];
+var songs = ["assets/audio/modestmouse.mp3", "assets/audio/radiohead.mp3", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
 var guessCount = 10;
 var usedLetters = [ ];
 var displayedBand = bands[Math.floor(Math.random() * bands.length)];
@@ -80,9 +81,16 @@ document.onkeyup = function(event) {
 		usedLetters = [ ];
 		document.getElementById("used-letters").innerHTML = usedLetters.join(" ");
 
-		//show band name ??
+		//show band name/song title ??
 
 		//play audio ??
+
+		function loadSong () {
+    		var loadSong = (songs[Math.floor(Math.random() * songs.length)]);
+    		var audioElement = document.createElement("audio");
+        	audioElement.setAttribute("src", loadSong);
+        	audioElement.play();
+			};
 
 	};
 			
